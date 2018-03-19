@@ -28,12 +28,17 @@ pipeline {
             }
         }
 
+        stage('kcov') {
+            steps {
+                sh 'cargo kcov'
+            }
+        }
+
         stage('Test') {
             steps {
 //                sh 'cargo test'
                 sh 'cargo test-junit --name cargo_test.xml'
                 archive "*.xml"
-                sh 'cargo kcov'
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
@@ -53,7 +58,7 @@ pipeline {
             sh 'find . -name "*.xml"'
             archive "**/*.xml"
             junit allowEmptyResults: true, testResults: '*test.xml'
-//            deleteDir()
+            deleteDir()
         }
     }
 }
