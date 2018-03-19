@@ -31,6 +31,7 @@ pipeline {
         stage('kcov') {
             steps {
                 sh 'cargo kcov'
+                archive "**/*.xml"
             }
         }
 
