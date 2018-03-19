@@ -22,11 +22,11 @@ pipeline {
 //            }
 //        }
 
-        stage('Build') {
-            steps {
-                sh 'cargo build --release'
-            }
-        }
+//        stage('Build') {
+//            steps {
+//                sh 'cargo build --release'
+//            }
+//        }
 
         stage('kcov') {
             steps {
