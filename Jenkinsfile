@@ -9,15 +9,15 @@ pipeline {
             }
         }
 
-        stage('Lint') {
+        stage('Build') {
             steps {
-                echo 'lint'
+                sh 'cargo build --release'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'test'
+                echo 'cargo test'
 //                archive "*.xml"
 //
 //                step([$class             : 'CoberturaPublisher',
