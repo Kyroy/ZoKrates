@@ -30,7 +30,7 @@ pipeline {
 
         stage('kcov') {
             steps {
-                sh 'cargo kcov'
+                sh 'cargo kcov -v'
                 archive "**/*.xml"
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
 //                sh 'cargo test'
                 sh 'cargo test-junit --name cargo_test.xml'
-                archive "*.xml"
+                archive "**/*.xml"
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
