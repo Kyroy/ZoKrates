@@ -7,7 +7,6 @@ pipeline {
             steps {
                 echo 'init'
                 sh 'ls -lah'
-                sh 'where cargo'
             }
         }
 
