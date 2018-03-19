@@ -28,12 +28,12 @@ pipeline {
 //            }
 //        }
 
-        stage('kcov') {
-            steps {
-                sh 'cargo kcov -v'
-                archive "**/*.xml"
-            }
-        }
+//        stage('kcov') {
+//            steps {
+//                sh 'cargo kcov -v'
+//                archive "**/*.xml"
+//            }
+//        }
 
         stage('Test') {
             steps {
