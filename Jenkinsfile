@@ -31,7 +31,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'cargo test'
+//                sh 'cargo test'
                 sh 'cargo test-junit --name cargo_test.xml'
                 archive "*.xml"
 //
