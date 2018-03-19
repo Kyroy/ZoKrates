@@ -31,7 +31,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'cargo test'
+                sh 'cargo test'
 //                archive "*.xml"
 //
 //                step([$class             : 'CoberturaPublisher',
