@@ -50,7 +50,7 @@ pipeline {
     post {
         always {
             junit allowEmptyResults: true, testResults: '*test.xml'
-            deleteDir()
+//            deleteDir()
         }
     }
 }
