@@ -32,7 +32,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cargo test'
-                cargo test-junit --name cargo_test.xml
+                sh 'cargo test-junit --name cargo_test.xml'
                 archive "*.xml"
 //
 //                step([$class             : 'CoberturaPublisher',
