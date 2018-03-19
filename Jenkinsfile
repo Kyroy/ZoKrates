@@ -7,7 +7,7 @@ pipeline {
             steps {
                 echo 'init'
                 sh 'ls -lah'
-                sh 'whoami'
+                sh 'rm -rf Cargo.lock'
             }
         }
 
