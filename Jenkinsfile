@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent { docker 'zokrates-base' }
+    agent { docker 'kyroy/zokrates-base-test' }
     stages {
         stage('Init') {
             steps {
