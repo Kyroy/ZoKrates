@@ -38,8 +38,8 @@ pipeline {
         stage('Test Test') {
             steps {
                 sh 'cargo test | tee cargo_test.out'
-                sh 'cat cargo_test.out | cargo_test_formatter > report_test.xml'
-                archive "**/*.xml"
+//                sh 'cat cargo_test.out | cargo_test_formatter > report_test.xml'
+//                archive "**/*.xml"
             }
         }
 
