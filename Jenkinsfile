@@ -6,7 +6,7 @@ pipeline {
         stage('Init') {
             steps {
                 echo 'init'
-                sh 'ls -lah'
+                sh 'cargo install cargo-test-junit'
             }
         }
 
@@ -32,7 +32,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cargo test'
-//                archive "*.xml"
+                cargo test-junit --name cargo_test.xml
+                archive "*.xml"
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
