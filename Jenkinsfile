@@ -6,8 +6,8 @@ pipeline {
         stage('Init') {
             steps {
                 echo 'init'
-                sh 'whoami'
                 sh 'ls -lah'
+                sh 'whoami'
             }
         }
 
