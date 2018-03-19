@@ -6,7 +6,6 @@ pipeline {
         stage('Init') {
             steps {
                 echo 'init'
-                sh 'cargo install cargo-test-junit'
             }
         }
 
@@ -34,6 +33,7 @@ pipeline {
 //                sh 'cargo test'
                 sh 'cargo test-junit --name cargo_test.xml'
                 archive "*.xml"
+                sh 'cargo kcov'
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
@@ -50,7 +50,8 @@ pipeline {
     }
     post {
         always {
-            archive "*.xml"
+            sh 'find . -name "*.xml"'
+            archive "**/*.xml"
             junit allowEmptyResults: true, testResults: '*test.xml'
 //            deleteDir()
         }
