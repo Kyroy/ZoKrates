@@ -50,6 +50,7 @@ pipeline {
     }
     post {
         always {
+            archive "*.xml"
             junit allowEmptyResults: true, testResults: '*test.xml'
 //            deleteDir()
         }
