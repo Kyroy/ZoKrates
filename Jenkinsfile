@@ -35,7 +35,7 @@ pipeline {
             deleteDir()
             mail body: 'fgt2222', subject: 'asd', to: 'dennis.kuhnert@sap.com'
         }
-        changes {
+        changed {
             mail body: 'fgt', subject: 'asd', to: 'dennis.kuhnert@sap.com'
 
             //from: ''
