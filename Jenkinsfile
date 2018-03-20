@@ -3,11 +3,17 @@
 pipeline {
     agent any
     stages {
-        withDockerContainer('kyroy/zokrates-base-test') {
-            stage('Build & Test') {
-                steps {
-                    sh 'RUSTFLAGS="-D warnings" cargo build --release'
-                    sh 'RUSTFLAGS="-D warnings" cargo test'
+        stage('Build & Test') {
+            stages {
+                stage('1') {
+                    steps {
+                        withDockerContainer('kyroy/zokrates-base-test') {
+                            steps {
+                                sh 'RUSTFLAGS="-D warnings" cargo build --release'
+                                sh 'RUSTFLAGS="-D warnings" cargo test'
+                            }
+                        }
+                    }
                 }
             }
         }
