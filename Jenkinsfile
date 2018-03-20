@@ -33,6 +33,12 @@ pipeline {
         always {
             // junit allowEmptyResults: true, testResults: '*test.xml'
             deleteDir()
+            mail body: 'fgt2222', subject: 'asd', to: 'dennis.kuhnert@sap.com'
+        }
+        changes {
+            mail body: 'fgt', subject: 'asd', to: 'dennis.kuhnert@sap.com'
+
+            //from: ''
         }
     }
 }
