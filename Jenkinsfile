@@ -25,24 +25,13 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'RUSTFLAGS="-D warnings" cargo test'
-//
-//                step([$class             : 'CoberturaPublisher',
-//                      autoUpdateHealth   : false,
-//                      autoUpdateStability: false,
-//                      coberturaReportFile: coverXML,
-//                      failUnhealthy      : false,
-//                      failUnstable       : false,
-//                      maxNumberOfBuilds  : 0,
-//                      onlyStable         : false,
-//                      sourceEncoding     : 'ASCII',
-//                      zoomCoverageChart  : false])
             }
         }
 
     }
     post {
         always {
-            junit allowEmptyResults: true, testResults: '*test.xml'
+            // junit allowEmptyResults: true, testResults: '*test.xml'
             deleteDir()
         }
     }
