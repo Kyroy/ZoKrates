@@ -41,7 +41,7 @@ pipeline {
             notifyStatusChange notificationRecipients: 'dennis.kuhnert@sap.com,mail@kyroy.com'
         }
         changed {
-
+            echo 'changed'
             //from: ''
         }
     }
