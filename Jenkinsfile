@@ -40,7 +40,7 @@ pipeline {
             deleteDir()
         }
         changed {
-            notifyStatusChange script: this, componentName: componentName
+            notifyStatusChange script: this
 
             //from: ''
         }
