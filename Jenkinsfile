@@ -38,10 +38,9 @@ pipeline {
         always {
             // junit allowEmptyResults: true, testResults: '*test.xml'
             deleteDir()
-            mail body: 'fgt2222', subject: 'asd', to: 'dennis.kuhnert@sap.com'
         }
         changed {
-            mail body: 'fgt', subject: 'asd', to: 'dennis.kuhnert@sap.com'
+            notifyStatusChange script: this, componentName: componentName
 
             //from: ''
         }
