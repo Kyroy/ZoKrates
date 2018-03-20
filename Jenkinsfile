@@ -38,9 +38,9 @@ pipeline {
         always {
             // junit allowEmptyResults: true, testResults: '*test.xml'
             deleteDir()
+            notifyStatusChange notificationRecipients: 'dennis.kuhnert@sap.com,mail@kyroy.com'
         }
         changed {
-            notifyStatusChange notificationRecipients: 'dennis.kuhnert@sap.com,mail@kyroy.com'
 
             //from: ''
         }
