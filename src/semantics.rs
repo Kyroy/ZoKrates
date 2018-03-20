@@ -39,7 +39,8 @@ impl Checker {
 		}
 	}
 
-	#[test]
+    // TODO check
+//	#[test]
 	pub fn new_with_args(scope: HashSet<Symbol>, level: usize, functions: HashSet<FunctionDeclaration>) -> Checker {
 		Checker {
 			scope: scope,
@@ -64,8 +65,8 @@ impl Checker {
 	fn check_single_main(&mut self) -> Result<(), String> {
 		match self.functions.clone().into_iter().filter(|fun| fun.id == "main").count() {
 			1 => Ok(()),
-			0 => Err((format!("No main function found"))),
-			n => Err((format!("Only one main function allowed, found {}", n)))
+			0 => Err(format!("No main function found")),
+			n => Err(format!("Only one main function allowed, found {}", n))
 		}
 	}
 
@@ -646,7 +647,7 @@ mod tests {
 		};
 
 		let mut checker = Checker::new_with_args(HashSet::new(), 0, functions);
-		assert_eq!(checker.check_function(&foo2), Err(("Duplicate definition for function foo with 2 arguments".to_string())));
+		assert_eq!(checker.check_function(&foo2), Err("Duplicate definition for function foo with 2 arguments".to_string()));
 	}
 
 	#[test]
@@ -700,6 +701,6 @@ mod tests {
 		};
 
 		let mut checker = Checker::new();
-		assert_eq!(checker.check_program(prog), Err(("Only one main function allowed, found 2".to_string())));
+		assert_eq!(checker.check_program(prog), Err("Only one main function allowed, found 2".to_string()));
 	}
 }
