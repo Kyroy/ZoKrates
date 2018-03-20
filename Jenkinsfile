@@ -2,8 +2,8 @@
 
 pipeline {
     agent any
-    withDockerContainer('kyroy/zokrates-base-test') {
-        stages {
+    stages {
+        withDockerContainer('kyroy/zokrates-base-test') {
             stage('Build & Test') {
                 steps {
                     sh 'RUSTFLAGS="-D warnings" cargo build --release'
