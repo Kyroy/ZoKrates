@@ -41,7 +41,7 @@ pipeline {
             notifyStatusChange script: this
         }
         changed {
-            notifyStatusChange script: this
+            notifyStatusChange notificationRecipients: 'dennis.kuhnert@sap.com,mail@kyroy.com'
 
             //from: ''
         }
