@@ -13,6 +13,9 @@ pipeline {
         }
 
         stage('Docker Build & Push') {
+            when {
+                environment name: 'BRANCH_NAME', value: 'master'
+            }
             steps {
                 script {
                     def dockerImage = docker.build("kyroy/zokrates")
