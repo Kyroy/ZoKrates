@@ -38,6 +38,7 @@ pipeline {
         always {
             // junit allowEmptyResults: true, testResults: '*test.xml'
             deleteDir()
+            notifyStatusChange script: this
         }
         changed {
             notifyStatusChange script: this
