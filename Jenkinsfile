@@ -6,19 +6,8 @@ pipeline {
         stage('Build & Test') {
             steps {
                 withDockerContainer('kyroy/zokrates-base-test') {
-                    stages {
-                        stage('Build') {
-                            steps {
-                                sh 'RUSTFLAGS="-D warnings" cargo build --release'
-                            }
-                        }
-
-                        stage('Test') {
-                            steps {
-                                sh 'RUSTFLAGS="-D warnings" cargo test'
-                            }
-                        }
-                    }
+                    sh 'RUSTFLAGS="-D warnings" cargo build --release'
+                    sh 'RUSTFLAGS="-D warnings" cargo test'
                 }
             }
         }
@@ -26,7 +15,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    var dockerImage = docker.build("kyroy/zokrates")
+                    def dockerImage = docker.build("kyroy/zokrates")
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-kyroy') {
                         dockerImage.push("latest")
                     }
