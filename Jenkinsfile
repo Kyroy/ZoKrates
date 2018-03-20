@@ -3,12 +3,6 @@
 pipeline {
     agent { docker 'kyroy/zokrates-base-test' }
     stages {
-        stage('Init') {
-            steps {
-                echo 'init'
-            }
-        }
-
 //        stage('Clippy') {
 //            steps {
 //                sh "cargo +nightly clippy --all"
@@ -22,32 +16,15 @@ pipeline {
 //            }
 //        }
 
-//        stage('Build') {
-//            steps {
-//                sh 'cargo build --release'
-//            }
-//        }
-
-//        stage('kcov') {
-//            steps {
-//                sh 'cargo kcov -v'
-//                archive "**/*.xml"
-//            }
-//        }
-
-        stage('Test Test') {
+        stage('Build') {
             steps {
-                sh 'cargo test | tee cargo_test.out'
-//                sh 'cat cargo_test.out | cargo_test_formatter > report_test.xml'
-//                archive "**/*.xml"
+                sh 'cargo build --release'
             }
         }
 
         stage('Test') {
             steps {
-//                sh 'cargo test'
-                sh 'cargo test-junit --name cargo_test.xml'
-                archive "**/*.xml"
+                sh 'cargo test'
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
@@ -65,8 +42,6 @@ pipeline {
     }
     post {
         always {
-            sh 'find . -name "*.xml"'
-            archive "**/*.xml"
             junit allowEmptyResults: true, testResults: '*test.xml'
             deleteDir()
         }
