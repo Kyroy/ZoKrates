@@ -2,10 +2,10 @@
 
 pipeline {
     agent any
-    stages {
-        stage('Build & Test') {
-            steps {
-                withDockerContainer('kyroy/zokrates-base-test') {
+    withDockerContainer('kyroy/zokrates-base-test') {
+        stages {
+            stage('Build & Test') {
+                steps {
                     sh 'RUSTFLAGS="-D warnings" cargo build --release'
                     sh 'RUSTFLAGS="-D warnings" cargo test'
                 }
@@ -15,6 +15,7 @@ pipeline {
         stage('Docker Build & Push') {
             when {
                 environment name: 'BRANCH_NAME', value: 'master'
+                // expression { env.BRANCH_NAME == "master" }
             }
             steps {
                 script {
