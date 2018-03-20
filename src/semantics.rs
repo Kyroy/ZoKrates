@@ -41,13 +41,13 @@ impl Checker {
 
     // TODO check
 //	#[test]
-	pub fn new_with_args(scope: HashSet<Symbol>, level: usize, functions: HashSet<FunctionDeclaration>) -> Checker {
-		Checker {
-			scope: scope,
-			functions: functions,
-			level: level,
-		}
-	}
+//	pub fn new_with_args(scope: HashSet<Symbol>, level: usize, functions: HashSet<FunctionDeclaration>) -> Checker {
+//		Checker {
+//			scope: scope,
+//			functions: functions,
+//			level: level,
+//		}
+//	}
 
 	pub fn check_program<T: Field>(&mut self, prog: Prog<T>) -> Result<(), String> {
 		for func in prog.functions {
