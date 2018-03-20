@@ -18,13 +18,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'cargo build --release'
+                sh 'cargo build --release -- -D warnings'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'cargo test'
+                sh 'cargo test -- -D warnings'
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
