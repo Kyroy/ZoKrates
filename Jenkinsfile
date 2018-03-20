@@ -18,13 +18,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'cargo build --release -- -D warnings'
+                sh 'RUSTFLAGS="-D warnings" cargo build --release'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'cargo test -- -D warnings'
+                sh 'RUSTFLAGS="-D warnings" cargo test'
 //
 //                step([$class             : 'CoberturaPublisher',
 //                      autoUpdateHealth   : false,
