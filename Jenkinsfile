@@ -6,7 +6,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 withDockerContainer('kyroy/zokrates-base-test') {
-                    node {
+                    node ('lab') {
                         steps {
                             sh 'RUSTFLAGS="-D warnings" cargo build --release'
                             sh 'RUSTFLAGS="-D warnings" cargo test'
